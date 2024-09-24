@@ -15,6 +15,8 @@ drone_ids = ["cf01","cf02","cf03","cf04","cf05","cf06","cf07","cf08","cf09","cf1
 #drone_ids = ["cf04"]
 #drone_ids = ["cf01"]
 
+#test
+
 
 def generate_launch_description():
     nodes = []
