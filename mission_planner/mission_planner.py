@@ -17,22 +17,24 @@ class MissionPlanner(Node):
                     #self.get_logger().info( f'IGNORING {drone}')
                     return
                 self.get_logger().info( f'{drone} saw: "%s"' % detectedTag)
-                if detectedTag in self.undetectedTags: # Single rescue
-                    self.get_logger().info('Target "%s" has been detected' % detectedTag)    
-                    self.get_logger().info(f'Landing {drone} on "%s"' % detectedTag)
-                    self.undetectedTags.remove(detectedTag)
-                    drones[drone] = False
-                    land_command(channel, int(drone[2:], 16))
-                elif detectedTag in self.doublerescue and self.doublerescue[detectedTag]>0: #double rescue
-                    self.doublerescue[detectedTag] -= 1
-                    self.get_logger().info('Target "%s" has been detected' % detectedTag)    
-                    self.get_logger().info(f'Landing {drone} on "%s"' % detectedTag)
-                    drones[drone] = False
-                    land_command(channel,int(drone[2:], 16))                    
-                    if self.doublerescue[detectedTag] == 0:
-                        self.doublerescue.pop(detectedTag)
-                self.get_logger().info(f'TARGETS REMAINING {len(self.undetectedTags) + len(self.doublerescue)}')
+                if detectedTag in self.dangerZones:
+                    self.get_logger().info(f' {detectedTag} is a danger zone')
+                elif detectedTag not in self.dangerZones:
+                    if detectedTag in self.undetectedTags: # Single rescue
+                        self.get_logger().info('Target "%s" has been detected' % detectedTag)    
+                        self.get_logger().info(f'Landing {drone} on "%s"' % detectedTag)
+                        self.undetectedTags.remove(detectedTag)
+                        drones[drone] = False
+                        land_command(channel, int(drone[2:], 16))
+                # if not self.undetectedTags:
+                #     self.get_logger().info('All targets have been detected')
+                #     for drone in drones:
+                #         drones[drone] = False
+                #     land_command(channel, int(drone[2:], 16))   
+                #     return
+                # self.get.logger().info(f'TARGETS REMAINING {len(self.undetectedTags)}')
             return
+    
         return listener_callback
     
 
@@ -41,28 +43,28 @@ class MissionPlanner(Node):
         super().__init__('mission_planner')
 
         #self.declare_parameter("undetectedTags", {"tag36h11:200","tag36h11:204"}) 
-        self.undetectedTags = {"tag36h11:0","tag36h11:1","tag36h11:2","tag36h11:3","tag36h11:4","tag36h11:5"}
-        
-        self.doublerescue = {"tag36h11:6":2,"tag36h11:7":2,"tag36h11:8":2,"tag36h11:9":2,"tag36h11:10":2}
-        
+        # self.undetectedTags = {"tag36h11:0","tag36h11:1","tag36h11:2","tag36h11:3","tag36h11:4","tag36h11:5"}
+        #undetected tags does not contain danger zones 
+        # self.undetectedTags ={"tag36h11:30","tag36h11:31","tag36h11:40","tag36h11:41","tag36h11:42","tag36h11:43"}
+        self.undetectedTags = {"tag36h11:24","tag36h11:25","tag36h11:26","tag36h11:27"}
+        # self.undetectedTags = {"tag36h11:24","tag36h11:25"}
+        # self.dangerZones={"tag36h11:35","tag36h11:34","tag36h11:22","tag36h11:23" }
+        # self.dangerZones={}
+        self.dangerZones={"tag36h11:42","tag36h11:43"}
+        # self.doublerescue = {"tag36h11:6":2,"tag36h11:7":2,"tag36h11:8":2,"tag36h11:9":2,"tag36h11:10":2}
+    
         #drone_ids = ["cf01","cf02","cf03","cf04","cf05","cf06","cf12","cf13"]
-        drone_ids = ["cf01","cf02","cf03","cf04","cf05",
-        "cf06","cf07","cf08","cf09","cf10",
-        "cf11","cf12","cf13","cf14","cf15",
-        "cf16","cf17","cf18","cf19","cf20",
-        "cf21","cf22","cf23","cf24","cf25",
-        "cf26","cf27","cf28","cf29"]
+        # drone_ids = ["cf01","cf02","cf03","cf04","cf05","cf06","cf07","cf08","cf09","cf10","cf11","cf12","cf13","cf14","cf15"]
+        drone_ids = ["cz19","cz02","cz03"]
+        # drone_ids = ["cz03"]
         #drone_ids = ["cf06","cf07","cf08","cf09","cf10","cf11"]
         #drone_ids = ["cf01","cf02","cf03","cf04","cf05","cf09"]
         drones = {drone_id: True for drone_id in drone_ids}
-        drone_channel = {"cf01":80,"cf02":80,"cf03":80,"cf04":80,"cf05":80,
-        "cf06":120,"cf07":120,"cf08":120,"cf09":120,"cf10":120,
-        "cf11":120,"cf12":120,"cf13":120,"cf14":60,"cf15":60,
-        "cf16":60,"cf17":60,"cf18":60,"cf19":60,"cf20":60,
-        "cf21":60,"cf22":60,"cf23":60,"cf24":60,"cf25":60,
-        "cf26":120,"cf27":80,"cf28":60,"cf29":60,"cf30":120,
-        "cf31":80,"cf32":120,"cf33":120,"cf34":120,"cf35":60,
-        "cf36":60,"cf37":60,"cf38":60,"cf39":60,"cf40":60}
+        # drone_channel = {"cf01":80,"cf02":80,"cf03":80,"cf04":80,"cf05":80,
+        # "cf06":120,"cf07":120,"cf08":120,"cf09":100,"cf10":100,
+        # "cf11":120,"cf12":120,"cf13":120,"cf14":120,"cf15":120}
+        drone_channel = {"cz19":30,"cz02":30,"cz03":30}
+        # drone_channel = {"cz03":30}
         self.callbacks = {}
    
             
