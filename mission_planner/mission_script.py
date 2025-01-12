@@ -4,8 +4,8 @@ from land_all import land_all_command
 from takeoff_multiradio import takeoff_multiradio
 
 
-MISSION_TIME = 180
-WAVE_TAKEOFF_INTERVAL = 45
+MISSION_TIME = 380
+WAVE_TAKEOFF_INTERVAL = 7
 WAVE_LAND_INTERVAL = 2
 
 if __name__ == '__main__':
@@ -31,6 +31,7 @@ if __name__ == '__main__':
     print('MISSION TIME 75%')
     time.sleep(MISSION_TIME/4)
     print('MISSION DONE')
+
 
     print('land for first wave')
     land_all_command(channel=channel_list)

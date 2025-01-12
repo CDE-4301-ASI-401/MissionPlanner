@@ -7,7 +7,6 @@ import time
 
 class MissionPlanner(Node):
 
-
     def create_callback(self, drone,drones, channel):
         # channel = 100
         def listener_callback(msg):
@@ -46,25 +45,26 @@ class MissionPlanner(Node):
         # self.undetectedTags = {"tag36h11:0","tag36h11:1","tag36h11:2","tag36h11:3","tag36h11:4","tag36h11:5"}
         #undetected tags does not contain danger zones 
         # self.undetectedTags ={"tag36h11:30","tag36h11:31","tag36h11:40","tag36h11:41","tag36h11:42","tag36h11:43"}
-        self.undetectedTags = {"tag36h11:24","tag36h11:25","tag36h11:26","tag36h11:27"}
+        # self.undetectedTags = {"tag36h11:30","tag36h11:31"}
+        self.undetectedTags = {"tag36h11:30"}
         # self.undetectedTags = {"tag36h11:24","tag36h11:25"}
         # self.dangerZones={"tag36h11:35","tag36h11:34","tag36h11:22","tag36h11:23" }
-        # self.dangerZones={}
-        self.dangerZones={"tag36h11:42","tag36h11:43"}
+        self.dangerZones={}
+        # self.dangerZones={"tag36h11:42","tag36h11:43"}
         # self.doublerescue = {"tag36h11:6":2,"tag36h11:7":2,"tag36h11:8":2,"tag36h11:9":2,"tag36h11:10":2}
     
         #drone_ids = ["cf01","cf02","cf03","cf04","cf05","cf06","cf12","cf13"]
         # drone_ids = ["cf01","cf02","cf03","cf04","cf05","cf06","cf07","cf08","cf09","cf10","cf11","cf12","cf13","cf14","cf15"]
-        drone_ids = ["cz19","cz02","cz03"]
-        # drone_ids = ["cz03"]
+        # drone_ids = ["cz07","cf10","cf11"]
+        drone_ids = ["cz07"]
         #drone_ids = ["cf06","cf07","cf08","cf09","cf10","cf11"]
         #drone_ids = ["cf01","cf02","cf03","cf04","cf05","cf09"]
         drones = {drone_id: True for drone_id in drone_ids}
         # drone_channel = {"cf01":80,"cf02":80,"cf03":80,"cf04":80,"cf05":80,
         # "cf06":120,"cf07":120,"cf08":120,"cf09":100,"cf10":100,
         # "cf11":120,"cf12":120,"cf13":120,"cf14":120,"cf15":120}
-        drone_channel = {"cz19":30,"cz02":30,"cz03":30}
-        # drone_channel = {"cz03":30}
+        drone_channel = {"cz07":80}
+        # drone_channel = {"cz07":80,"cf10":80,"cf11":60}
         self.callbacks = {}
    
             
