@@ -9,11 +9,11 @@ from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription
 from launch_ros.actions import Node
 
-#drone_ids = ["cf01","cf08"]
-#drone_ids = ["cf06","cf07","cf08","cf09","cf10","cf11"]
-drone_ids = ["cf01","cf02","cf03","cf04","cf05","cf06","cf07","cf08","cf09","cf10","cf11","cf12","cf13","cf14","cf15"]
-#drone_ids = ["cf04"]
-#drone_ids = ["cf01"]
+drone_ids = ["cf01","cf02","cf03","cf05",
+"cf06","cf07","cf08","cf09","cf10",
+"cf11","cf12","cf13","cf14","cf15",
+"cf16","cf18","cf19","cf34"]
+# drone_ids = ["cf18"]
 
 
 def generate_launch_description():
@@ -27,7 +27,9 @@ def generate_launch_description():
                 output='screen',
                 parameters=[{
                     'period': 0.1,
-                    'ip': f'192.168.1.1{namespace[2:]}',
+                    'ip': f'192.168.0.1{namespace[2:]}',
+                    # 'ip': f'192.168.10.149',
+                    # 'ip': f'192.168.0.118',
                     'name': f'{namespace}'  
                 }],
                 remappings=[
