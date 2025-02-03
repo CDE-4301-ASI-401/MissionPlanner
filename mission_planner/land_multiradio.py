@@ -3,8 +3,6 @@ from cflib.drivers.crazyradio import Crazyradio
 import time
 import sys
 
-
-
 def land_multiradio(channel):   
     
     # Define crazyradios

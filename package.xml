@@ -8,6 +8,7 @@
   <license>TODO: License declaration</license>
 
   <depend>land</depend>
+  <depend>reverse</depend>
 
   <exec_depend>ros2launch</exec_depend>
 
