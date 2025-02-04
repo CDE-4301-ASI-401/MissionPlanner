@@ -56,7 +56,6 @@ class MissionPlanner(Node):
                     self.get_logger().info(f'{drone} saw navigation aid {OneNavigationAid}')
                     if drone not in ["cf06", "cf07", "cf08", "cf09"]:
                         reverse_command(channel, int(drone[2:], 16))
-                        OneNavigationAid = None
                  
                     
                 
@@ -102,14 +101,14 @@ class MissionPlanner(Node):
         # drone_ids = ["cf01","cf02","cf03","cf04","cf05",
         # "cf06","cf07","cf08","cf09","cf10",
         # "cf11","cf12","cf13","cf14","cf15",
-        # "cf16","cf17","cf18","cf19","cf34"]
+        # "cf16","cf17","cf18","cf19","cf20"]
         drone_ids = ["cf18"]
         drones = {drone_id: True for drone_id in drone_ids}
-        # drone_channel = {"cf01":60,"cf02":60,"cf03":60,"cf04":60,"cf05":80,
-        # "cf06":60,"cf07":80,"cf08":60,"cf09":80,"cf10":60,
-        # "cf11":60,"cf12":60,"cf13":60,"cf14":60,"cf15":80,
-        # "cf16":80,"cf17":80,"cf18":80,"cf19":80,"cf34":60}
-        drone_channel = {"cf18":80}
+        drone_channel = {"cf01":60,"cf02":60,"cf03":60,"cf04":60,"cf05":80,
+        "cf06":60,"cf07":80,"cf08":60,"cf09":80,"cf10":60,
+        "cf11":60,"cf12":60,"cf13":60,"cf14":60,"cf15":80,
+        "cf16":80,"cf17":80,"cf18":80,"cf19":80,"cf20":60}
+        # drone_channel = {"cf18":80}
 
         self.callbacks = {}
    
