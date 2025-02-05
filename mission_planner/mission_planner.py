@@ -38,13 +38,15 @@ class MissionPlanner(Node):
                                 
                             self.undetectedTags.remove(OneVictimTag)
                             drones[drone] = False
+                            time.sleep(5) #delay
+                            print("LINE 41\n")
                             land_command(channel, int(drone[2:], 16))
                             OneDangerZone = None
 
                         elif OneDangerZone != None and OneVictimTag != None:
                             self.get_logger().info(f'Land {drone} on victim "{OneVictimTag}" away from "{OneDangerZone}" with delay')
                             self.undetectedTags.remove(OneVictimTag)
-                            
+                            print("LINE 47\n")
                             drones[drone] = False
                             time.sleep(5) #delay
                             land_command(channel, int(drone[2:], 16))
@@ -82,32 +84,32 @@ class MissionPlanner(Node):
         #self.declare_parameter("undetectedTags", {"tag36h11:200","tag36h11:204"}) 
         
         #undetected tags does not contain danger zones and navigation aids
-        # self.undetectedTags = {"tag36h11:21","tag36h11:22","tag36h11:23",
-        #                        "tag36h11:24","tag36h11:25","tag36h11:26",
-        #                        "tag36h11:27"}
-        self.undetectedTags={"tag36h11:30"}
+        self.undetectedTags = {"tag36h11:21","tag36h11:22","tag36h11:23",
+                               "tag36h11:24","tag36h11:25","tag36h11:26",
+                               "tag36h11:27"}
+        # self.undetectedTags={"tag36h11:30"}
 
-        self.dangerZones={"tag36h11:32"}
+        # self.dangerZones={"tag36h11:32"}
 
         self.reverseNavigationAids={"tag36h11:30","tag36h11:31","tag36h11:36","tag36h11:37"}
 
 #reverse navigation aid is aid 30 31 36 37
 
-        # self.dangerZones={"tag36h11:10","tag36h11:11","tag36h11:12",
-        #                   "tag36h11:13","tag36h11:14","tag36h11:15",
-        #                   "tag36h11:16","tag36h11:17"}
+        self.dangerZones={"tag36h11:10","tag36h11:11","tag36h11:12",
+                          "tag36h11:13","tag36h11:14","tag36h11:15",
+                          "tag36h11:16","tag36h11:17"}
         # self.dangerZones={}
     
-        # drone_ids = ["cf01","cf02","cf03","cf04","cf05",
-        # "cf06","cf07","cf08","cf09","cf10",
-        # "cf11","cf12","cf13","cf14","cf15",
-        # "cf16","cf17","cf18","cf19","cf20"]
-        drone_ids = ["cf18"]
+        drone_ids = ["cf02","cf03","cf04",
+        "cf06","cf07","cf08","cf09","cf10",
+        "cf11","cf12","cf14","cf15",
+        "cf16","cf18","cf19","cf20"]
+        # drone_ids = ["cf18"]
         drones = {drone_id: True for drone_id in drone_ids}
-        drone_channel = {"cf01":60,"cf02":60,"cf03":60,"cf04":60,"cf05":80,
+        drone_channel = {"cf02":60,"cf03":60,"cf04":60,
         "cf06":60,"cf07":80,"cf08":60,"cf09":80,"cf10":60,
-        "cf11":60,"cf12":60,"cf13":60,"cf14":60,"cf15":80,
-        "cf16":80,"cf17":80,"cf18":80,"cf19":80,"cf20":60}
+        "cf11":60,"cf12":60,"cf14":60,"cf15":80,
+        "cf16":80,"cf18":80,"cf19":80,"cf20":60}
         # drone_channel = {"cf18":80}
 
         self.callbacks = {}
