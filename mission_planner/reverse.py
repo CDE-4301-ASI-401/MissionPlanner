@@ -14,7 +14,7 @@ def reverse_command(channel, drone_address=0xff):
     # cr.send_packet( (0xff, 0x80, 0x70, 0x01, 0xff) )
     #                      data  [0]   [1]   [2]
     #                            src   cmd   dst
-    print('send reverse to ' + str(drone_address))
+    # print('send reverse to ' + str(drone_address))
 
     time.sleep(0.01)
     for i in range(3):
@@ -24,7 +24,7 @@ def reverse_command(channel, drone_address=0xff):
         cr.send_packet( (0xff, 0x80, 0x70, 0x01, 0xff) )
         #                      data  [0]   [1]   [2]
         #                            src   cmd   dst
-        
+
         print('send reverse to ' + str(drone_address))
 
         time.sleep(0.01)
