@@ -26,7 +26,7 @@ def generate_launch_description():
                 output='screen',
                 parameters=[{
                     'period': 0.1,
-                    'ip': f'192.168.0.1{namespace[2:]}',
+                    'ip': f'192.168.50.1{namespace[2:]}',
                     # 'ip': f'192.168.10.149',
                     # 'ip': f'192.168.0.118',
                     'name': f'{namespace}'  
