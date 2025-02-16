@@ -12,64 +12,67 @@ class MissionPlanner(Node):
 
     def create_callback(self, drone,drones, channel):
         # channel = 100
+        
         def listener_callback(msg):
-
+ 
             if msg.transforms:
                 detectedTag = msg.transforms[0].child_frame_id
-
+                current_time = time.time()
+                delta = current_time - self.reverse_command_timestamp
+                # self.get_logger().info(f'delta: {delta}')
+                
+                if not self.undetectedTags:
+                    self.get_logger().info('All targets have been detected')
+                    for drone in drones:
+                        drones[drone] = False
+                        land_command(channel, int(drone[2:], 16))
+                        self.get_logger().info('Final land command issued')
+                    return
+ 
                 if drones[drone] == False:
                     #self.get_logger().info( f'IGNORING {drone}')
                     return
-                self.get_logger().info( f'line 25 {drone} saw: "%s"' % detectedTag)
-      #cf10 keep timing out          
+                
+                self.get_logger().info( f'{drone} detectedTag: "%s"' % detectedTag)
+ 
                 if detectedTag in self.dangerZones:
                     OneDangerZone = detectedTag
-                    self.get_logger().info(f' line 33 {OneDangerZone} is a danger zone')
+                    self.get_logger().info(f'{OneDangerZone} is a danger zone')
+
+                    if detectedTag in self.undetectedTags:
+                        OneVictimTag = detectedTag
+                        self.get_logger().info(f'line 33 Landing {drone} on "%s"' % OneVictimTag)
+                        self.undetectedTags.remove(OneVictimTag)
+                        drones[drone] = False
+                        land_command(channel, int(drone[2:], 16))
+
+                elif detectedTag not in self.dangerZones:
 
                     if detectedTag in self.reverseNavigationAids:
                         OneNavigationAid = detectedTag
-                        self.get_logger().info(f'line37 {drone} saw navigation aid {OneNavigationAid}')
-                        if drone not in ["cf06", "cf07", "cf08", "cf09"]:
-                            reverse_command(channel, int(drone[2:], 16))
-                            self.get_logger().info(f'line 34 reverse command sent {drone}')
-
-                            if detectedTag in self.undetectedTags:
-                                OneVictimTag = detectedTag
-                                self.get_logger().info(f'line 38 Landing {drone} on "%s"' % OneVictimTag)
-                                self.undetectedTags.remove(OneVictimTag)
-                                drones[drone] = False
-                                land_command(channel, int(drone[2:], 16))
-
-                elif detectedTag not in self.dangerZones:
-                        if detectedTag in self.reverseNavigationAids:
-                            OneNavigationAid = detectedTag
-                            self.get_logger().info(f'line 46 {drone} saw navigation aid {OneNavigationAid}')
-                            if drone not in ["cf06", "cf07", "cf08", "cf09"]:
+                        # self.get_logger().info(f'new navAidDetection {self.navAidDetection}')
+                        self.get_logger().info(f'line 41 {drone} saw navigation aid {OneNavigationAid}')
+                        
+                        if drone not in ["cf01", "cf02", "cf03", "cf04", "cf05", "cf06", "cf07", "cf08", "cf09"]:
+                            if self.navAidDetection == True or delta > 5:
                                 reverse_command(channel, int(drone[2:], 16))
+                                # self.get_logger().info(f'line 45 reverse command sent {drone} channel {channel} [{int(drone[2:], 16)}]')
+                                self.get_logger().info(f'line 45 reverse command sent {drone}')
+                                self.reverse_command_timestamp = current_time
+                                self.navAidDetection = False
+                            else:
+                                self.get_logger().info(f'line 48 reverse command ignored {drone}')
+                                self.navAidDetection = False
 
-                                if detectedTag in self.undetectedTags:
-                                    OneVictimTag = detectedTag
-                                    self.get_logger().info(f'line 52 Landing {drone} on "%s"' % OneVictimTag)
-                                    self.undetectedTags.remove(OneVictimTag)
-                                    drones[drone] = False
-                                    land_command(channel, int(drone[2:], 16))
+                    if detectedTag in self.undetectedTags:
+                        OneVictimTag = detectedTag
+                        self.get_logger().info(f'line 53 Landing {drone} on "%s"' % OneVictimTag)
+                        self.undetectedTags.remove(OneVictimTag)
+                        drones[drone] = False
+                        land_command(channel, int(drone[2:], 16))
 
-                        elif detectedTag in self.undetectedTags:
-                            OneVictimTag = detectedTag
-                            self.get_logger().info(f'line 73 Landing {drone} on "%s"' % OneVictimTag)
-                            self.undetectedTags.remove(OneVictimTag)
-                            drones[drone] = False
-                            land_command(channel, int(drone[2:], 16))
-                # if not self.undetectedTags:
-                #     self.get_logger().info('line 64 All targets have been detected')
-                #     for drone in drones:
-                #         drones[drone] = False
-                #         land_command(channel, int(drone[2:], 16))   
-                #     return
-                # self.get.logger().info(f'line 69 TARGETS REMAINING {len(self.undetectedTags)}')
-                    
-                
-#alll drones except for red drones
+                self.get_logger().info(f'TARGETS REMAINING {len(self.undetectedTags)}')
+
             return
     
         return listener_callback
@@ -79,17 +82,23 @@ class MissionPlanner(Node):
         
         super().__init__('mission_planner')
 
+        self.reverse_command_timestamp = time.time()
+
+        self.navAidDetection = True
+        # self.get_logger().info(f'current navAidDetection {self.navAidDetection}')
         #self.declare_parameter("undetectedTags", {"tag36h11:200","tag36h11:204"}) 
         
         #undetected tags does not contain danger zones and navigation aids
         self.undetectedTags = {"tag36h11:21","tag36h11:22","tag36h11:23",
                                "tag36h11:24","tag36h11:25","tag36h11:26",
                                "tag36h11:27"}
+        
+        # self.undetectedTags = {}
         # self.undetectedTags={"tag36h11:30"}
 
         # self.dangerZones={"tag36h11:32"}
 
-        self.reverseNavigationAids={"tag36h11:30","tag36h11:31","tag36h11:36","tag36h11:37"}
+        self.reverseNavigationAids={"tag36h11:48","tag36h11:31","tag36h11:37","tag36h11:47"}
 
 #reverse navigation aid is aid 30 31 36 37
 
@@ -98,19 +107,18 @@ class MissionPlanner(Node):
                           "tag36h11:16","tag36h11:17"}
         # self.dangerZones={}
     
-        drone_ids = ["cf02","cf03","cf04",
-        "cf06","cf07","cf08","cf09","cf10",
-        "cf11","cf12","cf14","cf15",
-        "cf16","cf18","cf19","cf20"]
+        # drone_ids = ["cf02","cf03","cf04",
+        # "cf06","cf07","cf08","cf09","cf10",
+        # "cf11","cf12","cf13","cf14","cf15",
+        # "cf16","cf18","cf19","cf20"]
 
-    
-        # drone_ids = ["cf10"]
+        drone_ids = ["cf20"]
         drones = {drone_id: True for drone_id in drone_ids}
-        drone_channel = {"cf02":60,"cf03":60,"cf04":60,
-        "cf06":60,"cf07":80,"cf08":60,"cf09":80,"cf10":60,
-        "cf11":60,"cf12":60,"cf14":60,"cf15":80,
-        "cf16":80,"cf18":80,"cf19":80,"cf20":60}
-        # drone_channel = {"cf10":60}
+        # drone_channel = {"cf02":60,"cf03":60,"cf04":60, "cf05":80,
+        # "cf06":60,"cf07":80,"cf08":60,"cf09":80,"cf10":60,
+        # "cf11":60,"cf12":60,"cf13":80,"cf14":60,"cf15":80,
+        # "cf16":80,"cf18":80,"cf19":80,"cf20":60}
+        drone_channel = {"cf20":60}
 
         self.callbacks = {}
    
@@ -119,7 +127,6 @@ class MissionPlanner(Node):
             # Extract the number from the drone's name and use it to construct the function name
             callback_name = 'listener_callback' + drone[2:]
             current_callback = self.create_callback(drone,drones,drone_channel[drone])
-            print(f'callback: {drone_channel[drone]}')
             current_callback.__name__ = callback_name   # give the callback function a specific name.
             setattr(self, callback_name, current_callback)
             self.callbacks[drone] = current_callback
