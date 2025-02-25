@@ -4,7 +4,7 @@ import sys
 
 def reverse_command(channel, drone_address=0xff):   
 
-    cr = Crazyradio(devid=0)
+    cr = Crazyradio(devid=1)
     cr.set_channel(channel)
     cr.set_data_rate(cr.DR_2MPS)
 

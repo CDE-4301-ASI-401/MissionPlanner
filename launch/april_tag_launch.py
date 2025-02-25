@@ -13,7 +13,15 @@ from launch_ros.actions import Node
 # "cf06","cf07","cf08","cf09","cf10",
 # "cf11","cf12","cf13","cf14","cf15",
 # "cf16","cf18","cf19","cf20"]
-drone_ids = ["cf20"]
+drone_ids = ["cf01"]
+# drone_ids = ["cf37","cf20"]
+# drone_ids = ["cf10","cf11","cf12","cf13","cf14", "cf15", "cf18","cf20"]
+# drone_ids = ["cf16","cf37","cf18","cf19"]
+drone_ids = ["cf01","cf02","cf03","cf04",
+"cf05","cf06","cf07","cf08","cf09","cf10",
+"cf11","cf12","cf13","cf14","cf15","cf16",
+"cf37","cf18","cf19","cf20","cf35","cf37"]
+
 
 def generate_launch_description():
     nodes = []
@@ -28,7 +36,7 @@ def generate_launch_description():
                     'period': 0.1,
                     'ip': f'192.168.50.1{namespace[2:]}',
                     # 'ip': f'192.168.10.149',
-                    'ip': f'192.168.50.120',
+                    # 'ip': f'192.168.50.120',
                     'name': f'{namespace}'  
                 }],
                 remappings=[
