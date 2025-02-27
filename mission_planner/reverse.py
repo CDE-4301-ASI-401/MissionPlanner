@@ -4,7 +4,14 @@ import sys
 
 def reverse_command(channel, drone_address=0xff):   
 
-    cr = Crazyradio(devid=1)
+    for devid in range(3):
+        try:
+            cr = Crazyradio(devid=devid)
+            return cr
+        except Exception as e:
+            print(f"Error with dongle {devid}: {e}")
+            continue
+        
     cr.set_channel(channel)
     cr.set_data_rate(cr.DR_2MPS)
 

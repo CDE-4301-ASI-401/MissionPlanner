@@ -14,16 +14,17 @@ if __name__ == '__main__':
         "cf10":60,"cf11":60,"cf12":60,"cf13":60,"cf14":60,
         "cf15":80,"cf16":80,"cf17":80,"cf18":80,"cf19":80,
         "cf20":60,"cf35":80,"cf37":80}
-    
-    for i in drone_channel:
-        id = i[2:]
-        channel = drone_channel.get(i)
-        uri = f'radio://0/{channel}/2M/E7E7E7E7{id}'
-        # print(f'url: {uri}')
-        try:
-            cf = power_switch.PowerSwitch(uri)
-            cf.platform_power_down()
-            print(f"Successfully powered down Drone {id} on channel {channel}")
-        except Exception as e:
-            print(f"ignored drone {id} on channel {channel}")
-            
+        
+    for i in range(3):
+        for i in drone_channel:
+            id = i[2:]
+            channel = drone_channel.get(i)
+            uri = f'radio://0/{channel}/2M/E7E7E7E7{id}'
+            # print(f'url: {uri}')
+            try:
+                cf = power_switch.PowerSwitch(uri)
+                cf.platform_power_down()
+                print(f"Successfully powered down Drone {id} on channel {channel}")
+            except Exception as e:
+                print(f"ignored drone {id} on channel {channel}")
+                
