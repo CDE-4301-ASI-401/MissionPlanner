@@ -34,6 +34,6 @@ if __name__ == '__main__':
     #print('input',sys.argv)
     channel_list = sys.argv[1:]
     try:
-            takeoff_multiradio(channel=channel_list)
+        takeoff_multiradio(channel=channel_list)
     except IndexError:
         print("Please specify channels")

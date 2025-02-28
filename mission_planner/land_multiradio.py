@@ -2,7 +2,9 @@
 from cflib.drivers.crazyradio import Crazyradio
 import time
 import sys
+from land_all import land_all_command
 
+#python3 land_multiradio.py 60 80
 def land_multiradio(channel):   
     
     # Define crazyradios
@@ -34,6 +36,6 @@ if __name__ == '__main__':
     channel_list = sys.argv[1:]
     # land_all_command(channel=(sys.argv))
     try:
-            land_all_command(channel=channel_list)
+        land_all_command(channel=channel_list)
     except IndexError:
         print("Please specify channels")
