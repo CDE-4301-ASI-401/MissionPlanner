@@ -5,7 +5,7 @@ import sys
 
 
 def land_command(channel,drone_address=0xff):   
-    cr = Crazyradio(devid=0) #devid = radio dongle id (0 being the first dongle)
+    cr = Crazyradio(devid=1) #devid = radio dongle id (0 being the first dongle)
 
     cr.set_channel(channel)
     cr.set_data_rate(cr.DR_2MPS)
