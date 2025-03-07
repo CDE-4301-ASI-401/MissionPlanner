@@ -4,44 +4,45 @@ import time
 import sys
 
 
-def land_command(channel,drone_address=0xff):   
+def command_tag_1(channel,drone_address=0xff):   
 
-    id = 0
+    id = 1
     done = False
 
     while (not done):
         try:
-            cr = Crazyradio(devid=id)
-                
+            cr = Crazyradio(devid=id) #devid = radio dongle id (0 being the first dongle)
+
             cr.set_channel(channel)
             cr.set_data_rate(cr.DR_2MPS)
 
-            # # Send multicast packet to P2P port 7
-            # cr.set_address((0xff, 0xe7, 0xe7, 0xe7, 0xe7))
-            # cr.set_ack_enable(False)
-
             for i in range(3):
                 # Send multicast packet to P2P port 7
-                cr.set_address((0xff, 0xe7, 0xe7, 0xe7, 0xe7))
-                cr.set_ack_enable(False)
-                cr.send_packet((0xff, 0x80, 0x63, 0x00, 0xff))  # Send the packet
-                print('send land to ' + str(drone_address))
+                cr.set_address((0xff,0xe7,0xe7,0xe7,0xe7)) # sets destination address for outgoing packets
+                cr.set_ack_enable(False) # disable acknowledgement for outgoing packets
+                cr.send_packet( (0xff, 0x80, 0x71, 0x01, drone_address) ) # sends packet to destination address via radio link 
+                print('Tag A ' + str(drone_address))
+            
 
                 time.sleep(0.01)
             cr.close()
             done = True
+            return 0
+         
         except:
-            print(f"land: Error with dongle {id}")
+            print(f"command_tag_1: Error with dongle {id}")
             id = (id + 1) % 7
-            print(f"land:Trying dongle {id}")
+            print(f"command_tag_1: Trying dongle {id}")
+
+
 
 if __name__ == '__main__':
     try:
             #print(hex(int(sys.argv[2])))
-            land_command(channel=int(sys.argv[1]), drone_address=(int(sys.argv[2],16)))
+            command_tag_1(channel=int(sys.argv[1]), drone_address=(int(sys.argv[2],16)))
             #land_command(channel=int(sys.argv[1]), drone_address=(int(sys.argv[2])))
     except IndexError:
-        print("Please specify channel and drone ID")
+        print("Please specify channel and drone ID")    
         
 '''
 0xff = broadcast address

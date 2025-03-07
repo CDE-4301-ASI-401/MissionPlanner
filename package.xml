@@ -9,6 +9,9 @@
 
   <depend>land</depend>
   <depend>reverse</depend>
+  <depend>command_tag_1</depend>
+  <depend>command_tag_2</depend>
+  <depend>command_tag_3</depend>
 
   <exec_depend>ros2launch</exec_depend>
 
