@@ -73,18 +73,17 @@ class MissionPlanner(Node):
                                 self.get_logger().info(f'line 48 reverse command ignored {drone}')
                                 self.navAidDetection = False
             
-                    if detectedTag == "tag36h11:31":
+                    if detectedTag == "tag36h11:31" or detectedTag == "tag36h11:43":
                         self.get_logger().info(f'line 74 command_tag_1 sent {drone} for {detectedTag}')
                         time.sleep(1)
                         command_tag_1(channel, int(drone[2:], 16))
-
 
                     if detectedTag == "tag36h11:41":
                         self.get_logger().info(f'line 78 command_tag_2 sent  {drone} for {detectedTag}')
                         time.sleep(1)
                         command_tag_2(channel, int(drone[2:], 16))
 
-                    if detectedTag == "tag36h11:51":
+                    if detectedTag == "tag36h11:51" or detectedTag == "tag36h11:39":
                         self.get_logger().info(f'line 82 command_tag_3 sent {drone} for {detectedTag}')
                         time.sleep(1)
                         command_tag_3(channel, int(drone[2:], 16))
@@ -115,9 +114,10 @@ class MissionPlanner(Node):
         #self.declare_parameter("undetectedTags", {"tag36h11:200","tag36h11:204"}) 
         
         #undetected tags does not contain danger zones and navigation aids
-        self.undetectedTags = {"tag36h11:21","tag36h11:24","tag36h11:26","tag36h11:27","tag36h11:20","tag36h11:25"}
+        self.undetectedTags = {"tag36h11:21","tag36h11:24","tag36h11:26",
+                               "tag36h11:27","tag36h11:20","tag36h11:25"}
         
-        self.reverseNavigationAids={"tag36h11:39","tag36h11:34","tag36h11:43","tag36h11:33"}
+        self.reverseNavigationAids={"tag36h11:34","tag36h11:33"}
 
         self.dangerZones={"tag36h11:10","tag36h11:11","tag36h11:12",
                           "tag36h11:13","tag36h11:14","tag36h11:15",

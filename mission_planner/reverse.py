@@ -22,7 +22,7 @@ def reverse_command(channel, drone_address=0xff):
                 # Send multicast packet to P2P port 7
                 cr.set_address((0xff, 0xe7, 0xe7, 0xe7, 0xe7))
                 cr.set_ack_enable(False)
-                cr.send_packet((0xff, 0x80, 0x70, 0x01, 0xff))  # Send the packet
+                cr.send_packet((0xff, 0x80, 0x70, 0x01, drone_address))  # Send the packet
                 print('send reverse to ' + str(drone_address))
 
                 time.sleep(0.01)
