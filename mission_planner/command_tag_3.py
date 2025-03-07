@@ -19,7 +19,7 @@ def command_tag_3(channel,drone_address=0xff):
                 # Send multicast packet to P2P port 7
                 cr.set_address((0xff,0xe7,0xe7,0xe7,0xe7)) # sets destination address for outgoing packets
                 cr.set_ack_enable(False) # disable acknowledgement for outgoing packets
-                cr.send_packet( (0xff, 0x80, 0x72, 0x01, drone_address) ) # sends packet to destination address via radio link 
+                cr.send_packet( (0xff, 0x80, 0x73, 0x01, drone_address) ) # sends packet to destination address via radio link 
                 print('Tag C ' + str(drone_address))
             
 
