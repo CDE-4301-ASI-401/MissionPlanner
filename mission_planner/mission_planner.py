@@ -123,19 +123,22 @@ class MissionPlanner(Node):
                           "tag36h11:13","tag36h11:14","tag36h11:15",
                           "tag36h11:16","tag36h11:17"}
 
-
         drone_ids = ["cf01","cf02","cf03","cf04",
                      "cf05","cf06","cf07","cf08","cf09","cf10",
                      "cf11","cf12","cf13","cf14","cf15","cf16",
                      "cf17","cf18","cf19","cf20","cf35"]
+
+        # drone_ids = ["cf19"]
   
         drones = {drone_id: True for drone_id in drone_ids}
         
         drone_channel = {"cf01":20,"cf02":60,"cf03":60,"cf04":60,
-            "cf05":80,"cf06":60,"cf07":80,"cf08":60,"cf09":20,
+            "cf05":80,"cf06":60,"cf07":80,"cf08":60,"cf09":80,
             "cf10":60,"cf11":60,"cf12":60,"cf13":20,"cf14":20,
             "cf15":20,"cf16":80,"cf17":80,"cf18":80,"cf19":80,
             "cf20":60,"cf33":20,"cf35":80}
+        
+        # drone_channel = {"cf19":30}
         
         self.callbacks = {}
          
