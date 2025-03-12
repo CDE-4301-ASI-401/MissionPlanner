@@ -114,8 +114,8 @@ class MissionPlanner(Node):
         #self.declare_parameter("undetectedTags", {"tag36h11:200","tag36h11:204"}) 
         
         #undetected tags does not contain danger zones and navigation aids
-        self.undetectedTags = {"tag36h11:21","tag36h11:22","tag36h11:23","tag36h11:24",
-                               "tag36h11:25","tag36h11:26","tag36h11:27","tag36h11:28"}
+        self.undetectedTags = {"tag36h11:20","tag36h11:21","tag36h11:22","tag36h11:23",
+                               "tag36h11:24","tag36h11:25","tag36h11:26","tag36h11:27"}
         
         self.reverseNavigationAids={"tag36h11:33","tag36h11:34","tag36h11:39","tag36h11:43"}
 
