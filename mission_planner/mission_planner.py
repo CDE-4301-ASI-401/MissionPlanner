@@ -60,7 +60,7 @@ class MissionPlanner(Node):
                         self.get_logger().info(f'line 41 {drone} saw navigation aid {OneNavigationAid}')
                         
                         # if drone not in ["cf01", "cf02", "cf03", "cf04", "cf05", "cf06", "cf07", "cf08", "cf09"]:
-                        if drone not in ["cf33", "cf02", "cf35", "cf04", "cf05", "cf06", "cf07", "cf09"]:
+                        if drone not in ["cf04", "cf05", "cf06", "cf07", "cf08", "cf09", "cf01", "cf02", "cf033"]:
                             if self.navAidDetection == True or delta > 5:
                                 time.sleep(1)
                                 self.get_logger().info(f'channel {channel}')
@@ -73,7 +73,7 @@ class MissionPlanner(Node):
                                 self.get_logger().info(f'line 48 reverse command ignored {drone}')
                                 self.navAidDetection = False
             
-                    if detectedTag == "tag36h11:31" or detectedTag == "tag36h11:43":
+                    if detectedTag == "tag36h11:31" or detectedTag == "tag36h11:36":
                         self.get_logger().info(f'line 74 command_tag_1 sent {drone} for {detectedTag}')
                         time.sleep(1)
                         command_tag_1(channel, int(drone[2:], 16))
@@ -83,7 +83,7 @@ class MissionPlanner(Node):
                         time.sleep(1)
                         command_tag_2(channel, int(drone[2:], 16))
 
-                    if detectedTag == "tag36h11:51" or detectedTag == "tag36h11:39":
+                    if detectedTag == "tag36h11:51" or detectedTag == "tag36h11:47":
                         self.get_logger().info(f'line 82 command_tag_3 sent {drone} for {detectedTag}')
                         time.sleep(1)
                         command_tag_3(channel, int(drone[2:], 16))
@@ -114,29 +114,26 @@ class MissionPlanner(Node):
         #self.declare_parameter("undetectedTags", {"tag36h11:200","tag36h11:204"}) 
         
         #undetected tags does not contain danger zones and navigation aids
-        self.undetectedTags = {"tag36h11:21","tag36h11:24","tag36h11:26",
-                               "tag36h11:27","tag36h11:20","tag36h11:25"}
+        self.undetectedTags = {"tag36h11:20","tag36h11:21","tag36h11:22","tag36h11:23",
+                               "tag36h11:24","tag36h11:25","tag36h11:26","tag36h11:27"}
         
-        self.reverseNavigationAids={"tag36h11:34","tag36h11:33"}
+        self.reverseNavigationAids={"tag36h11:34","tag36h11:33","tag36h11:39","tag36h11:43"}
 
         self.dangerZones={"tag36h11:10","tag36h11:11","tag36h11:12",
                           "tag36h11:13","tag36h11:14","tag36h11:15",
                           "tag36h11:16","tag36h11:17"}
 
-        drone_ids = ["cf01","cf02","cf03","cf04",
-                     "cf05","cf06","cf07","cf08","cf09","cf10",
-                     "cf11","cf12","cf13","cf14","cf15","cf16",
-                     "cf17","cf18","cf19","cf20","cf35"]
+        drone_ids = ["cf12","cf13","cf14","cf15","cf16",
+                     "cf17","cf10","cf19"]
 
         # drone_ids = ["cf19"]
   
         drones = {drone_id: True for drone_id in drone_ids}
         
-        drone_channel = {"cf01":20,"cf02":60,"cf03":60,"cf04":60,
-            "cf05":80,"cf06":60,"cf07":80,"cf08":60,"cf09":80,
-            "cf10":60,"cf11":60,"cf12":60,"cf13":20,"cf14":20,
-            "cf15":20,"cf16":80,"cf17":80,"cf18":80,"cf19":80,
-            "cf20":60,"cf33":20,"cf35":80}
+        drone_channel = {
+            "cf12":60,"cf13":60,"cf14":60,
+            "cf15":80,"cf16":80,"cf17":80,
+            "cf10":80,"cf19":80}
         
         # drone_channel = {"cf19":30}
         
