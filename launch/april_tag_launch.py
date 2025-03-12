@@ -17,7 +17,7 @@ from launch_ros.actions import Node
 # drone_ids = ["cf11","cf12","cf14","cf17","cf20"]
 # drone_ids = ["cf10","cf11","cf12","cf13","cf14", "cf15", "cf18","cf20"]
 # drone_ids = ["cf16","cf37","cf18","cf19"]
-drone_ids = ["cf01","cf02","cf33","cf11","cf20"]
+drone_ids = ["cf04", "cf05","cf06","cf07","cf08","cf09"]
 # drone_ids = ["cf10",
 # "cf11","cf12","cf13","cf14","cf15",
 # "cf17","cf20"]

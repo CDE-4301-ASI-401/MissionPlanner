@@ -123,13 +123,13 @@ class MissionPlanner(Node):
                           "tag36h11:13","tag36h11:14","tag36h11:15",
                           "tag36h11:16","tag36h11:17"}
 
-        drone_ids = ["cf01","cf02","cf33","cf11","cf20"]
+        drone_ids = ["cf04", "cf05","cf06","cf07","cf08","cf09"]
 
         # drone_ids = ["cf19"]
   
         drones = {drone_id: True for drone_id in drone_ids}
         
-        drone_channel = {"cf01":60,"cf02":60,"cf33":60,"cf11":60,"cf20":60}
+        drone_channel = {"cf04":60, "cf05":80,"cf06":60,"cf07":80,"cf08":60,"cf09":80}
         
         # drone_channel = {"cf19":30}
         
