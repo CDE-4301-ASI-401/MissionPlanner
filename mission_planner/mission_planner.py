@@ -119,9 +119,7 @@ class MissionPlanner(Node):
         
         self.reverseNavigationAids={"tag36h11:33","tag36h11:34","tag36h11:39","tag36h11:43"}
 
-        self.dangerZones={"tag36h11:10","tag36h11:11","tag36h11:12",
-                          "tag36h11:13","tag36h11:14","tag36h11:15",
-                          "tag36h11:16","tag36h11:17"}
+        self.dangerZones={"tag36h11:10","tag36h11:11","tag36h11:12", "tag36h11:13"}
 
         drone_ids = ["cf04", "cf05","cf06","cf07","cf08","cf09"]
 
