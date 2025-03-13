@@ -5,7 +5,7 @@ from takeoff_multiradio import takeoff_multiradio
 
 
 MISSION_TIME = 400
-WAVE_TAKEOFF_INTERVAL = 3
+WAVE_TAKEOFF_INTERVAL = 5
 WAVE_LAND_INTERVAL = 2
 
 if __name__ == '__main__':

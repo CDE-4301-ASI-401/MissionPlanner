@@ -59,8 +59,7 @@ class MissionPlanner(Node):
                         # self.get_logger().info(f'new navAidDetection {self.navAidDetection}')
                         self.get_logger().info(f'line 41 {drone} saw navigation aid {OneNavigationAid}')
                         
-                        # if drone not in ["cf01", "cf02", "cf03", "cf04", "cf05", "cf06", "cf07", "cf08", "cf09"]:
-                        if drone not in ["cf04", "cf05", "cf06", "cf07", "cf08", "cf09", "cf01", "cf02", "cf033"]:
+                        if drone not in ["cf01", "cf02", "cf33"]:
                             if self.navAidDetection == True or delta > 5:
                                 time.sleep(1)
                                 self.get_logger().info(f'channel {channel}')
@@ -119,12 +118,10 @@ class MissionPlanner(Node):
         
         self.reverseNavigationAids={"tag36h11:34","tag36h11:33","tag36h11:39","tag36h11:43"}
 
-        self.dangerZones={"tag36h11:10","tag36h11:11","tag36h11:12",
-                          "tag36h11:13","tag36h11:14","tag36h11:15",
-                          "tag36h11:16","tag36h11:17"}
+        self.dangerZones={"tag36h11:10","tag36h11:11","tag36h11:12","tag36h11:13"}
 
         drone_ids = ["cf12","cf13","cf14","cf15","cf16",
-                     "cf17","cf10","cf19"]
+                     "cf17","cf18","cf19"]
 
         # drone_ids = ["cf19"]
   
@@ -133,7 +130,7 @@ class MissionPlanner(Node):
         drone_channel = {
             "cf12":60,"cf13":60,"cf14":60,
             "cf15":80,"cf16":80,"cf17":80,
-            "cf10":80,"cf19":80}
+            "cf18":80,"cf19":80}
         
         # drone_channel = {"cf19":30}
         
