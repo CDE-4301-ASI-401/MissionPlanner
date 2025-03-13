@@ -1,0 +1,73 @@
+running egg_info
+creating build/mission_planner/mission_planner.egg-info
+writing build/mission_planner/mission_planner.egg-info/PKG-INFO
+writing dependency_links to build/mission_planner/mission_planner.egg-info/dependency_links.txt
+writing entry points to build/mission_planner/mission_planner.egg-info/entry_points.txt
+writing requirements to build/mission_planner/mission_planner.egg-info/requires.txt
+writing top-level names to build/mission_planner/mission_planner.egg-info/top_level.txt
+writing manifest file 'build/mission_planner/mission_planner.egg-info/SOURCES.txt'
+reading manifest file 'build/mission_planner/mission_planner.egg-info/SOURCES.txt'
+writing manifest file 'build/mission_planner/mission_planner.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/idp/ms/src/MissionPlanner/build/mission_planner/build
+creating /home/idp/ms/src/MissionPlanner/build/mission_planner/build/lib
+creating /home/idp/ms/src/MissionPlanner/build/mission_planner/build/lib/mission_planner
+copying mission_planner/mission_script.py -> /home/idp/ms/src/MissionPlanner/build/mission_planner/build/lib/mission_planner
+copying mission_planner/land_all.py -> /home/idp/ms/src/MissionPlanner/build/mission_planner/build/lib/mission_planner
+copying mission_planner/land_multiradio.py -> /home/idp/ms/src/MissionPlanner/build/mission_planner/build/lib/mission_planner
+copying mission_planner/__init__.py -> /home/idp/ms/src/MissionPlanner/build/mission_planner/build/lib/mission_planner
+copying mission_planner/kill.py -> /home/idp/ms/src/MissionPlanner/build/mission_planner/build/lib/mission_planner
+copying mission_planner/land.py -> /home/idp/ms/src/MissionPlanner/build/mission_planner/build/lib/mission_planner
+copying mission_planner/mission_planner.py -> /home/idp/ms/src/MissionPlanner/build/mission_planner/build/lib/mission_planner
+copying mission_planner/kill_all.py -> /home/idp/ms/src/MissionPlanner/build/mission_planner/build/lib/mission_planner
+copying mission_planner/reverse.py -> /home/idp/ms/src/MissionPlanner/build/mission_planner/build/lib/mission_planner
+copying mission_planner/command_tag_2.py -> /home/idp/ms/src/MissionPlanner/build/mission_planner/build/lib/mission_planner
+copying mission_planner/takeoff.py -> /home/idp/ms/src/MissionPlanner/build/mission_planner/build/lib/mission_planner
+copying mission_planner/command_tag_3.py -> /home/idp/ms/src/MissionPlanner/build/mission_planner/build/lib/mission_planner
+copying mission_planner/command_tag_1.py -> /home/idp/ms/src/MissionPlanner/build/mission_planner/build/lib/mission_planner
+copying mission_planner/takeoff_multiradio.py -> /home/idp/ms/src/MissionPlanner/build/mission_planner/build/lib/mission_planner
+running install
+running install_lib
+creating /home/idp/ms/src/MissionPlanner/install/mission_planner/lib/python3.10/site-packages/mission_planner
+copying /home/idp/ms/src/MissionPlanner/build/mission_planner/build/lib/mission_planner/mission_script.py -> /home/idp/ms/src/MissionPlanner/install/mission_planner/lib/python3.10/site-packages/mission_planner
+copying /home/idp/ms/src/MissionPlanner/build/mission_planner/build/lib/mission_planner/land_all.py -> /home/idp/ms/src/MissionPlanner/install/mission_planner/lib/python3.10/site-packages/mission_planner
+copying /home/idp/ms/src/MissionPlanner/build/mission_planner/build/lib/mission_planner/land_multiradio.py -> /home/idp/ms/src/MissionPlanner/install/mission_planner/lib/python3.10/site-packages/mission_planner
+copying /home/idp/ms/src/MissionPlanner/build/mission_planner/build/lib/mission_planner/__init__.py -> /home/idp/ms/src/MissionPlanner/install/mission_planner/lib/python3.10/site-packages/mission_planner
+copying /home/idp/ms/src/MissionPlanner/build/mission_planner/build/lib/mission_planner/kill.py -> /home/idp/ms/src/MissionPlanner/install/mission_planner/lib/python3.10/site-packages/mission_planner
+copying /home/idp/ms/src/MissionPlanner/build/mission_planner/build/lib/mission_planner/land.py -> /home/idp/ms/src/MissionPlanner/install/mission_planner/lib/python3.10/site-packages/mission_planner
+copying /home/idp/ms/src/MissionPlanner/build/mission_planner/build/lib/mission_planner/mission_planner.py -> /home/idp/ms/src/MissionPlanner/install/mission_planner/lib/python3.10/site-packages/mission_planner
+copying /home/idp/ms/src/MissionPlanner/build/mission_planner/build/lib/mission_planner/kill_all.py -> /home/idp/ms/src/MissionPlanner/install/mission_planner/lib/python3.10/site-packages/mission_planner
+copying /home/idp/ms/src/MissionPlanner/build/mission_planner/build/lib/mission_planner/reverse.py -> /home/idp/ms/src/MissionPlanner/install/mission_planner/lib/python3.10/site-packages/mission_planner
+copying /home/idp/ms/src/MissionPlanner/build/mission_planner/build/lib/mission_planner/command_tag_2.py -> /home/idp/ms/src/MissionPlanner/install/mission_planner/lib/python3.10/site-packages/mission_planner
+copying /home/idp/ms/src/MissionPlanner/build/mission_planner/build/lib/mission_planner/takeoff.py -> /home/idp/ms/src/MissionPlanner/install/mission_planner/lib/python3.10/site-packages/mission_planner
+copying /home/idp/ms/src/MissionPlanner/build/mission_planner/build/lib/mission_planner/command_tag_3.py -> /home/idp/ms/src/MissionPlanner/install/mission_planner/lib/python3.10/site-packages/mission_planner
+copying /home/idp/ms/src/MissionPlanner/build/mission_planner/build/lib/mission_planner/command_tag_1.py -> /home/idp/ms/src/MissionPlanner/install/mission_planner/lib/python3.10/site-packages/mission_planner
+copying /home/idp/ms/src/MissionPlanner/build/mission_planner/build/lib/mission_planner/takeoff_multiradio.py -> /home/idp/ms/src/MissionPlanner/install/mission_planner/lib/python3.10/site-packages/mission_planner
+byte-compiling /home/idp/ms/src/MissionPlanner/install/mission_planner/lib/python3.10/site-packages/mission_planner/mission_script.py to mission_script.cpython-310.pyc
+byte-compiling /home/idp/ms/src/MissionPlanner/install/mission_planner/lib/python3.10/site-packages/mission_planner/land_all.py to land_all.cpython-310.pyc
+byte-compiling /home/idp/ms/src/MissionPlanner/install/mission_planner/lib/python3.10/site-packages/mission_planner/land_multiradio.py to land_multiradio.cpython-310.pyc
+byte-compiling /home/idp/ms/src/MissionPlanner/install/mission_planner/lib/python3.10/site-packages/mission_planner/__init__.py to __init__.cpython-310.pyc
+byte-compiling /home/idp/ms/src/MissionPlanner/install/mission_planner/lib/python3.10/site-packages/mission_planner/kill.py to kill.cpython-310.pyc
+byte-compiling /home/idp/ms/src/MissionPlanner/install/mission_planner/lib/python3.10/site-packages/mission_planner/land.py to land.cpython-310.pyc
+byte-compiling /home/idp/ms/src/MissionPlanner/install/mission_planner/lib/python3.10/site-packages/mission_planner/mission_planner.py to mission_planner.cpython-310.pyc
+byte-compiling /home/idp/ms/src/MissionPlanner/install/mission_planner/lib/python3.10/site-packages/mission_planner/kill_all.py to kill_all.cpython-310.pyc
+byte-compiling /home/idp/ms/src/MissionPlanner/install/mission_planner/lib/python3.10/site-packages/mission_planner/reverse.py to reverse.cpython-310.pyc
+byte-compiling /home/idp/ms/src/MissionPlanner/install/mission_planner/lib/python3.10/site-packages/mission_planner/command_tag_2.py to command_tag_2.cpython-310.pyc
+byte-compiling /home/idp/ms/src/MissionPlanner/install/mission_planner/lib/python3.10/site-packages/mission_planner/takeoff.py to takeoff.cpython-310.pyc
+byte-compiling /home/idp/ms/src/MissionPlanner/install/mission_planner/lib/python3.10/site-packages/mission_planner/command_tag_3.py to command_tag_3.cpython-310.pyc
+byte-compiling /home/idp/ms/src/MissionPlanner/install/mission_planner/lib/python3.10/site-packages/mission_planner/command_tag_1.py to command_tag_1.cpython-310.pyc
+byte-compiling /home/idp/ms/src/MissionPlanner/install/mission_planner/lib/python3.10/site-packages/mission_planner/takeoff_multiradio.py to takeoff_multiradio.cpython-310.pyc
+running install_data
+creating /home/idp/ms/src/MissionPlanner/install/mission_planner/share/ament_index
+creating /home/idp/ms/src/MissionPlanner/install/mission_planner/share/ament_index/resource_index
+creating /home/idp/ms/src/MissionPlanner/install/mission_planner/share/ament_index/resource_index/packages
+copying resource/mission_planner -> /home/idp/ms/src/MissionPlanner/install/mission_planner/share/ament_index/resource_index/packages
+copying package.xml -> /home/idp/ms/src/MissionPlanner/install/mission_planner/share/mission_planner
+creating /home/idp/ms/src/MissionPlanner/install/mission_planner/share/mission_planner/launch
+copying launch/april_tag_launch.py -> /home/idp/ms/src/MissionPlanner/install/mission_planner/share/mission_planner/launch
+running install_egg_info
+Copying build/mission_planner/mission_planner.egg-info to /home/idp/ms/src/MissionPlanner/install/mission_planner/lib/python3.10/site-packages/mission_planner-0.0.0-py3.10.egg-info
+running install_scripts
+Installing mission_planner script to /home/idp/ms/src/MissionPlanner/install/mission_planner/lib/mission_planner
+writing list of installed files to '/home/idp/ms/src/MissionPlanner/build/mission_planner/install.log'

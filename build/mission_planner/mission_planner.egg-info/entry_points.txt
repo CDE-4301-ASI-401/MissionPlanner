@@ -1,0 +1,2 @@
+[console_scripts]
+mission_planner = mission_planner.mission_planner:main
