@@ -10,6 +10,7 @@ import numpy as np
 from .command_tag_1 import command_tag_1
 from .command_tag_2 import command_tag_2
 from .command_tag_3 import command_tag_3
+import subprocess
 
 class MissionPlanner(Node):
 
@@ -154,6 +155,18 @@ class MissionPlanner(Node):
                 10)
             current_subscription
 
+        self.wait_input()
+    
+    def wait_input(self):
+        while True:
+            user_input = input("Enter 'kill' to execute the kill_all.py").strip().lower()
+            if user_input == 'kill':
+                try:
+                    subprocess.run(['python3', 'kill_script.py'], check=True)
+                    self.get_logger().info("kill_script.py executed successfully.")
+                except subprocess.CalledProcessError as e:
+                    self.get_logger().error(f"Error executing kill_script.py: {e}")
+            break
 
 def main(args=None):
     rclpy.init(args=args)
