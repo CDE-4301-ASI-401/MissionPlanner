@@ -162,10 +162,10 @@ class MissionPlanner(Node):
             user_input = input("Enter 'kill' to execute the kill_all.py").strip().lower()
             if user_input == 'kill':
                 try:
-                    subprocess.run(['python3', 'kill_script.py'], check=True)
-                    self.get_logger().info("kill_script.py executed successfully.")
+                    subprocess.run(['python3', 'kill_all.py'], check=True)
+                    self.get_logger().info("kill_all.py executed successfully.")
                 except subprocess.CalledProcessError as e:
-                    self.get_logger().error(f"Error executing kill_script.py: {e}")
+                    self.get_logger().error(f"Error executing kill_all.py: {e}")
             break
 
 def main(args=None):
