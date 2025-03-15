@@ -60,7 +60,7 @@ class MissionPlanner(Node):
                         self.get_logger().info(f'line 41 {drone} saw navigation aid {OneNavigationAid}')
                         
                         # if drone not in ["cf01", "cf02", "cf03", "cf04", "cf05", "cf06", "cf07", "cf08", "cf09"]:
-                        if drone not in ["cf04", "cf05", "cf06", "cf07", "cf08", "cf09", "cf01", "cf02", "cf033"]:
+                        if drone in ["cf01", "cf02", "cf33"]:
                             if self.navAidDetection == True or delta > 5:
                                 time.sleep(1)
                                 self.get_logger().info(f'channel {channel}')
