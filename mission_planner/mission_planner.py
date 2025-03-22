@@ -21,14 +21,6 @@ class MissionPlanner(Node):
                 detectedTag = msg.transforms[0].child_frame_id
 
                 # self.get_logger().info(f'detectedTag: {detectedTag}')
-                # x = msg.transforms[0].transform.translation.x
-                # y = msg.transforms[0].transform.translation.y
-                # z = msg.transforms[0].transform.translation.z
-
-                # self.get_logger().info(f'x: {x}, z: {z}')
-                # distance = np.sqrt(x**2 + z**2)
-                # self.get_logger().info(f'distance: {distance}')
-
 
                 current_time = time.time()
                 delta = current_time - self.reverse_command_timestamp
@@ -60,7 +52,7 @@ class MissionPlanner(Node):
                         self.get_logger().info(f'line 41 {drone} saw navigation aid {OneNavigationAid}')
                         
                         # if drone not in ["cf01", "cf02", "cf03", "cf04", "cf05", "cf06", "cf07", "cf08", "cf09"]:
-                        if drone in ["cf01", "cf02", "cf033"]:
+                        if drone not in ["cf04", "cf05", "cf06","cf07", "cf08", "cf09"]:
                             if self.navAidDetection == True or delta > 5:
                                 time.sleep(1)
                                 self.get_logger().info(f'channel {channel}')
